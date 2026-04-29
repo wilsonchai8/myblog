@@ -1,0 +1,21 @@
+{
+  "service": "order-service",
+  "env": "prod",
+  "time_window": "2026-04-24 14:05 ~ 14:12",
+  "alert_title": "订单服务 5xx 错误率升高",
+  "symptom": "/api/order/create 接口错误率从 0.3% 升到 18%",
+  "logs": [
+    "2026-04-24T14:06:13 ERROR order-service create order failed: dial tcp 10.21.4.15:3306: i/o timeout",
+    "2026-04-24T14:06:14 ERROR order-service query inventory failed: dial tcp 10.21.4.15:3306: i/o timeout"
+  ],
+  "metrics": {
+    "5xx_rate": "0.3% -> 18%",
+    "p95_latency": "120ms -> 4.8s",
+    "db_connection_timeout": "持续升高",
+    "cpu": "无明显异常",
+    "memory": "无明显异常"
+  },
+  "recent_changes": [
+    "2026-04-24 13:58 完成数据库访问白名单调整"
+  ]
+}
